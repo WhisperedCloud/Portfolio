@@ -1,19 +1,22 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import dns from 'dns';
 
 dotenv.config();
+
+// 🚨 Fix ENETUNREACH: Force Node.js to resolve IPv4 first.
+// Render instances sometimes lack proper IPv6 routes to Google's SMTP.
+dns.setDefaultResultOrder('ipv4first');
 
 /**
  * 🚨 CRITICAL PRODUCTION NOTE FOR RENDER DEPLOYMENTS 🚨
  * 
  * If you are on the Render FREE tier, outbound SMTP traffic (Ports 25, 465, 587) 
- * is BLOCKED by their firewall to prevent spam. This is the root cause of the 
- * 'ETIMEDOUT' error you are seeing. Nodemailer will NEVER connect on the Free tier.
+ * is BLOCKED by their firewall to prevent spam. This guarantees an ETIMEDOUT error.
  * 
  * To fix this:
  * 1. Upgrade to a Paid Render Tier (which unblocks outbound SMTP).
- * 2. OR use an HTTP-based Email API provider like Resend, SendGrid, or Postmark 
- *    (which operate over port 443/HTTPS and are never blocked).
+ * 2. OR use an HTTP-based Email API provider like Resend (see walkthrough.md).
  */
 
 const transporter = nodemailer.createTransport({
@@ -37,8 +40,11 @@ transporter.verify((error, success) => {
     if (error) {
         console.error('❌ Nodemailer Transporter Error:');
         console.error(error);
-        if ((error as any).code === 'ETIMEDOUT') {
+        if ((error as NodeJS.ErrnoException).code === 'ETIMEDOUT') {
             console.error('⚠️ ETIMEDOUT WARNING: If you are on Render Free Tier, SMTP ports are blocked. You must use an HTTP API like Resend.');
+        }
+        if ((error as NodeJS.ErrnoException).code === 'ENETUNREACH') {
+            console.error('⚠️ ENETUNREACH WARNING: IPv6 routing failed. Ensure IPv4 is forced.');
         }
     } else {
         console.log('✅ Nodemailer is ready to take our messages');
@@ -112,7 +118,9 @@ export const sendContactEmails = async (data: ContactData) => {
         if (error.code === 'EAUTH') {
             throw new Error('SMTP Authentication Failed: Check your Gmail App Password.');
         } else if (error.code === 'ETIMEDOUT') {
-            throw new Error('SMTP Connection Timeout: Your hosting provider (Render Free Tier) is blocking SMTP ports.');
+            throw new Error('SMTP Connection Timeout: Render Free Tier blocks SMTP ports. Please upgrade to a paid tier or use an API like Resend.');
+        } else if (error.code === 'ENETUNREACH') {
+            throw new Error('SMTP Network Unreachable: Server lacks outbound route to Gmail. Please upgrade Render tier or use an API like Resend.');
         }
         
         throw new Error(`Failed to send emails: ${error.message}`);

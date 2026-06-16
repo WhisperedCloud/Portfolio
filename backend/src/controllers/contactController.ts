@@ -23,10 +23,12 @@ export const handleContactForm = async (req: Request, res: Response) => {
         console.error('Error handling contact form:', error);
         
         let errorMessage = 'An error occurred while sending the message';
-        if (error.message && error.message.includes('auth')) {
+        if (error.message && error.message.includes('Authentication Failed')) {
              errorMessage = 'Failed to authenticate with the email server. Please check SMTP configuration.';
-        } else if (error.message && error.message.includes('network')) {
-             errorMessage = 'Network error while connecting to the email server.';
+        } else if (error.message && error.message.includes('Connection Timeout')) {
+             errorMessage = 'Render Free Tier blocks SMTP ports. Please use an HTTP API like Resend.';
+        } else if (error.message && error.message.includes('Network Unreachable')) {
+             errorMessage = 'Server lacks outbound route to Gmail (Render Free Tier restriction).';
         }
 
         res.status(500).json({ success: false, error: errorMessage, details: error.message || 'Unknown error' });
