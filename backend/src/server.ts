@@ -14,16 +14,24 @@ app.use(express.json());
 // Routes
 app.use('/api/contact', contactRoutes);
 
-// Basic health check
+// Health Check
 app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'ok' });
+    res.status(200).json({
+        status: 'ok',
+        message: 'Backend is running'
+    });
 });
 
-if (process.env.NODE_ENV !== 'production') {
-    const PORT = process.env.PORT || 5001;
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-}
+// Startup Logs
+console.log('🚀 Backend starting...');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('PORT:', process.env.PORT);
+
+// Start Server
+const PORT = process.env.PORT || 5001;
+
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+});
 
 export default app;
