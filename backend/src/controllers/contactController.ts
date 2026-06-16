@@ -19,8 +19,16 @@ export const handleContactForm = async (req: Request, res: Response) => {
         await sendContactEmails({ name, email, subject, message });
 
         res.status(200).json({ success: true, message: 'Message sent successfully' });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error handling contact form:', error);
-        res.status(500).json({ success: false, error: 'An error occurred while sending the message' });
+        
+        let errorMessage = 'An error occurred while sending the message';
+        if (error.message && error.message.includes('auth')) {
+             errorMessage = 'Failed to authenticate with the email server. Please check SMTP configuration.';
+        } else if (error.message && error.message.includes('network')) {
+             errorMessage = 'Network error while connecting to the email server.';
+        }
+
+        res.status(500).json({ success: false, error: errorMessage, details: error.message || 'Unknown error' });
     }
 };

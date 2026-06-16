@@ -12,7 +12,8 @@ export default function ContactForm() {
     setStatus('loading');
 
     try {
-      const response = await fetch('http://localhost:5001/api/contact', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, subject: 'New Transmission from Neural Portfolio' })
