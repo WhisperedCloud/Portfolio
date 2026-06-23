@@ -10,6 +10,8 @@ const app = express();
 // Middleware
 const allowedOrigins = [
     process.env.FRONTEND_URL,
+    'https://portfolio-sepia-seven-pvay5xlljm.vercel.app',
+    'https://eswar-portfolio-developer.vercel.app',
     'http://localhost:3000'
 ].filter(Boolean) as string[];
 
