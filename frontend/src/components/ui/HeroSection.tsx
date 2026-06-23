@@ -2,6 +2,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+import Typewriter from './Typewriter';
+import SystemMetrics from './SystemMetrics';
+
+const Hero3DElement = dynamic(() => import('./Hero3DElement'), { ssr: false });
 
 export default function HeroSection() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -28,20 +33,34 @@ export default function HeroSection() {
 
   const technicalBio = "Full Stack & AI Developer crafting modern web applications and AI-driven solutions using React, Node.js, TypeScript, and Generative AI technologies. Turning complex ideas into scalable, user-focused products.";
 
-  const spokenIntro = "Hi, I'm Eswar M, a Full Stack & AI Developer passionate about building scalable web applications and intelligent AI-powered solutions. I specialize in React, Next.js, Node.js, TypeScript, PostgreSQL, and Large Language Models, with experience delivering production-ready products that integrate Generative AI, automation, and modern cloud technologies. From AI recruitment platforms to conversational assistants, I focus on creating impactful, user-centric solutions that combine innovation, performance, and real-world business value.";
+  const spokenIntro = "Hi, I'm Eeshwar M, a Full Stack and AI Developer. I specialize in scalable web applications and intelligent solutions using React, Node.js, and Large Language Models. I focus on creating user-centric products that combine innovation with real-world value.";
+
+  const playIntroVoice = () => {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(spokenIntro);
+    
+    const voices = window.speechSynthesis.getVoices();
+    const humanVoice = voices.find(v => 
+      v.name.includes("Google UK English Male") || 
+      v.name.includes("Google US English") || 
+      v.name.includes("Samantha") || 
+      v.name.includes("Daniel") ||
+      v.name.includes("Natural") ||
+      v.name.includes("Premium")
+    ) || voices.find(v => v.lang === 'en-GB') || voices.find(v => v.lang.startsWith('en'));
+
+    if (humanVoice) utterance.voice = humanVoice;
+    utterance.rate = 1.20; // Slower rate for better articulation
+    utterance.pitch = 0.7; // Lower pitch for deeper bass
+
+    utterance.onend = () => setIsPlaying(false);
+    setIsPlaying(true);
+    window.speechSynthesis.speak(utterance);
+  };
 
   useEffect(() => {
-    // Attempt to auto-play speech synthesis on load
-    const playIntro = () => {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(spokenIntro);
-        utterance.onend = () => setIsPlaying(false);
-        setIsPlaying(true);
-        window.speechSynthesis.speak(utterance);
-    };
-
     // Delay slightly to ensure voices are loaded
-    const timer = setTimeout(playIntro, 1000);
+    const timer = setTimeout(playIntroVoice, 1000);
 
     return () => {
         clearTimeout(timer);
@@ -54,11 +73,7 @@ export default function HeroSection() {
       window.speechSynthesis.cancel();
       setIsPlaying(false);
     } else {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(spokenIntro);
-      utterance.onend = () => setIsPlaying(false);
-      setIsPlaying(true);
-      window.speechSynthesis.speak(utterance);
+      playIntroVoice();
     }
   };
 
@@ -67,6 +82,12 @@ export default function HeroSection() {
       
       {/* Background Grid Lines (Harsh) */}
       <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'linear-gradient(black 1px, transparent 1px), linear-gradient(90deg, black 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
+
+      {/* 3D Wireframe Element */}
+      <Hero3DElement />
+
+      {/* System Metrics Overlay */}
+      <SystemMetrics />
 
       {/* Hero Content */}
       <motion.div 
@@ -99,8 +120,8 @@ export default function HeroSection() {
             </motion.h2>
 
             <div className="max-w-md border-l-2 border-black pl-6">
-                <p className="text-sm md:text-base text-black font-medium leading-relaxed uppercase tracking-widest text-justify">
-                    {technicalBio}
+                <p className="text-sm md:text-base text-black font-medium leading-relaxed uppercase tracking-widest text-justify min-h-[150px]">
+                    <Typewriter text={technicalBio} delay={500} speed={15} />
                 </p>
                 <div className="mt-8 flex gap-4">
                     <button 

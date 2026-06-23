@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import TextScramble from './TextScramble';
 
 const projects = [
     {
@@ -55,6 +57,8 @@ const projects = [
 ];
 
 export default function VaultProjects() {
+    const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
     return (
         <section id="projects" className="w-full bg-[#f4f4f4] border-b-2 border-black font-sans py-32 px-6 md:px-12">
             
@@ -90,16 +94,18 @@ export default function VaultProjects() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: idx * 0.1 }}
-                        className="group flex flex-col md:flex-row items-start md:items-center justify-between p-8 border-b-2 border-black bg-white hover:bg-black transition-colors cursor-pointer"
+                        onMouseEnter={() => setHoveredIdx(idx)}
+                        onMouseLeave={() => setHoveredIdx(null)}
+                        className="group relative flex flex-col md:flex-row items-start md:items-center justify-between p-8 border-b-2 border-black bg-white hover:bg-black transition-colors cursor-pointer overflow-hidden"
                     >
                         {/* Left Side */}
-                        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-16 w-full md:w-auto">
+                        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-16 w-full md:w-auto">
                             <span className="text-black group-hover:text-white text-xl font-bold font-mono w-16">
                                 {(idx + 1).toString().padStart(2, '0')}
                             </span>
                             <div>
                                 <h3 className="text-3xl md:text-5xl font-black text-black group-hover:text-white tracking-tighter uppercase font-[family-name:var(--font-playfair)] mb-2 group-hover:translate-x-4 transition-transform">
-                                    {project.title}
+                                    <TextScramble text={project.title} trigger={hoveredIdx === idx} />
                                 </h3>
                                 <p className="text-black group-hover:text-red-500 text-[10px] font-bold tracking-[0.3em] uppercase">
                                     {project.category}
@@ -107,8 +113,15 @@ export default function VaultProjects() {
                             </div>
                         </div>
 
+                        {/* Middle JSON Data */}
+                        <div className="hidden lg:flex flex-1 justify-center items-center px-4 opacity-0 group-hover:opacity-80 transition-opacity duration-300 overflow-hidden pointer-events-none">
+                            <div className="text-green-400 font-mono text-[9px] xl:text-[10px] border-l-2 border-green-500/40 pl-4 whitespace-pre">
+                                {`{\n  "id": "PRJ-${(idx + 1).toString().padStart(3, '0')}",\n  "status": "DEPLOYED",\n  "uptime": "99.99%",\n  "latency": "${Math.floor(Math.random() * 30 + 10)}ms"\n}`}
+                            </div>
+                        </div>
+
                         {/* Right Side */}
-                        <div className="flex flex-col md:flex-row items-start md:items-center gap-8 mt-8 md:mt-0 w-full md:w-auto justify-between md:justify-end">
+                        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-8 mt-8 md:mt-0 w-full md:w-auto justify-between md:justify-end">
                             <div className="flex flex-wrap gap-2 max-w-[250px]">
                                 {project.tags.map((tag, i) => (
                                     <span key={i} className="px-2 py-1 border border-black group-hover:border-white/30 text-black group-hover:text-white/70 text-[8px] font-bold tracking-widest uppercase">

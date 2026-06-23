@@ -3,17 +3,30 @@
 import { useAppStore } from '@/store';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import TextScramble from './TextScramble';
 
 export default function Navbar() {
   const setHoveredElement = useAppStore((state) => state.setHoveredElement);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
   return (
     <>
-      <div className="fixed top-0 left-0 w-full z-50 bg-white border-b-2 border-black flex items-center justify-between px-6 py-4 md:px-12 md:py-6">
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-red-600 z-[60] origin-left" 
+        style={{ scaleX }} 
+      />
+      <div className="fixed top-0 left-0 w-full z-50 bg-white border-b-2 border-black flex items-center justify-between px-6 py-4 md:px-12 md:py-6 mt-1">
         
         {/* Brand */}
         <div 
@@ -28,10 +41,22 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-12 text-xs font-bold tracking-[0.3em] uppercase text-black">
-          <a href="#about" className="hover:underline underline-offset-8 decoration-2 transition-all" onMouseEnter={() => setHoveredElement('link')} onMouseLeave={() => setHoveredElement(null)}>Index</a>
-          <a href="#projects" className="hover:underline underline-offset-8 decoration-2 transition-all" onMouseEnter={() => setHoveredElement('link')} onMouseLeave={() => setHoveredElement(null)}>Archive</a>
-          <a href="#experience" className="hover:underline underline-offset-8 decoration-2 transition-all" onMouseEnter={() => setHoveredElement('link')} onMouseLeave={() => setHoveredElement(null)}>Journal</a>
-          <a href="#contact" className="hover:underline underline-offset-8 decoration-2 transition-all" onMouseEnter={() => setHoveredElement('link')} onMouseLeave={() => setHoveredElement(null)}>Contact</a>
+          {[
+            { name: 'Index', href: '#about' },
+            { name: 'Archive', href: '#projects' },
+            { name: 'Journal', href: '#experience' },
+            { name: 'Contact', href: '#contact' }
+          ].map((link) => (
+            <a 
+              key={link.name}
+              href={link.href} 
+              className="hover:underline underline-offset-8 decoration-2 transition-all relative"
+              onMouseEnter={() => { setHoveredElement('link'); setHoveredLink(link.name); }} 
+              onMouseLeave={() => { setHoveredElement(null); setHoveredLink(null); }}
+            >
+              <TextScramble text={link.name} trigger={hoveredLink === link.name} />
+            </a>
+          ))}
         </div>
 
         {/* Actions & Mobile Toggle */}

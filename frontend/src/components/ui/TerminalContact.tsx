@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Rocket } from 'lucide-react';
 
 export default function TerminalContact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -38,6 +39,11 @@ export default function TerminalContact() {
             
             <h2 className="text-6xl md:text-8xl lg:text-[9rem] font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] leading-[0.8] mb-8">
                 Let's<br/>Talk.
+                <motion.span 
+                    animate={{ opacity: [1, 1, 0, 0] }} 
+                    transition={{ repeat: Infinity, duration: 0.8, times: [0, 0.5, 0.5, 1] }} 
+                    className="inline-block w-[0.4em] h-[0.8em] bg-red-600 ml-2 -mb-2 align-baseline"
+                />
             </h2>
             
             <p className="text-black text-sm md:text-base font-medium leading-relaxed max-w-md text-justify mb-12">
@@ -55,13 +61,26 @@ export default function TerminalContact() {
         {/* Right Side: Editorial Form */}
         <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
             {status === 'success' ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col justify-center items-start min-h-[400px]">
-                    <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] mb-4">
-                        Message<br/>Received.
-                    </h3>
-                    <p className="text-black text-sm font-medium tracking-widest uppercase">
-                        I will get back to you shortly.
-                    </p>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col justify-center items-start min-h-[400px] relative overflow-hidden">
+                    
+                    {/* Animated Rocket */}
+                    <motion.div 
+                        initial={{ y: 500, opacity: 0 }}
+                        animate={{ y: [400, -800], opacity: [0, 1, 1, 0] }}
+                        transition={{ duration: 2.0, ease: "easeIn" }}
+                        className="absolute right-[15%] z-0 pointer-events-none"
+                    >
+                        <Rocket size={320} strokeWidth={1.5} className="text-red-600 -rotate-45 drop-shadow-[0_0_30px_rgba(220,38,38,0.4)]" />
+                    </motion.div>
+
+                    <div className="relative z-10">
+                        <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] mb-4">
+                            Message<br/>Received.
+                        </h3>
+                        <p className="text-black text-sm font-medium tracking-widest uppercase">
+                            I will get back to you shortly.
+                        </p>
+                    </div>
                 </motion.div>
             ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-12 w-full">
