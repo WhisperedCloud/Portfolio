@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mic, Brain, TrendingUp, Database, Search, ExternalLink } from 'lucide-react';
+import { Mic, Brain, TrendingUp, Database, Search, ExternalLink, Calendar } from 'lucide-react';
 import { useState, useRef, MouseEvent } from 'react';
 
 const projects = [
@@ -14,6 +14,16 @@ const projects = [
     colSpan: "md:col-span-2",
     rowSpan: "md:row-span-2",
     isLarge: true,
+  },
+  {
+    title: "Leave Flow",
+    tech: "React / Node.js / MongoDB",
+    desc: "A full-stack leave approval and management system with role-based access control, multi-level workflows, and real-time analytics.",
+    highlights: ["RBAC", "Multi-level Approvals", "Dashboard Analytics"],
+    icon: <Calendar size={100} strokeWidth={1} />,
+    colSpan: "md:col-span-3",
+    rowSpan: "md:row-span-1",
+    isLarge: false,
   },
   {
     title: "Memory Chatbot",
@@ -55,6 +65,7 @@ const projects = [
     rowSpan: "md:row-span-1",
     isLarge: false,
   }
+  
 ];
 
 function BentoCard({ project, index }: { project: any, index: number }) {
@@ -81,7 +92,7 @@ function BentoCard({ project, index }: { project: any, index: number }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className={`group relative overflow-hidden rounded-[2rem] border border-white/5 bg-[#030a0a]/80 backdrop-blur-md p-8 md:p-10 transition-all duration-500 hover:border-neon-blue/30 ${project.colSpan} ${project.rowSpan} flex flex-col`}
+      className={`group relative overflow-hidden rounded-4xl border border-white/5 bg-dark-bg/80 backdrop-blur-md p-8 md:p-10 transition-all duration-500 hover:border-neon-blue/30 ${project.colSpan} ${project.rowSpan} flex flex-col`}
     >
       {/* Mouse Spotlight Gradient */}
       <div
@@ -141,9 +152,9 @@ export default function BentoProjects() {
     <div className="w-full max-w-6xl mx-auto">
       <div className="mb-16 flex flex-col items-center text-center">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-[1px] bg-neon-blue" />
+          <div className="w-8 h-px bg-neon-blue" />
           <p className="text-neon-blue text-[10px] font-bold tracking-[0.3em] uppercase">Ecosystem Builds</p>
-          <div className="w-8 h-[1px] bg-neon-blue" />
+          <div className="w-8 h-px bg-neon-blue" />
         </div>
         <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">Featured Projects</h2>
       </div>

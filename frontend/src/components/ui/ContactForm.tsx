@@ -42,7 +42,7 @@ export default function ContactForm() {
 
       <form 
         onSubmit={handleSubmit} 
-        className="glass-panel p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden backdrop-blur-xl bg-[#030a0a]/60"
+        className="glass-panel p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden backdrop-blur-xl bg-dark-bg/60"
       >
         {/* Subtle grid background */}
         <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -92,7 +92,7 @@ export default function ContactForm() {
         <div className="flex flex-col items-center justify-center relative z-10">
           <button
             type="submit" disabled={status === 'loading'}
-            className="group relative px-10 py-4 rounded-full bg-[#030a0a] border border-neon-blue/30 overflow-hidden disabled:opacity-50 transition-all hover:scale-105"
+            className="group relative px-10 py-4 rounded-full bg-dark-bg border border-neon-blue/30 overflow-hidden disabled:opacity-50 transition-all hover:scale-105"
           >
             <div className="absolute inset-0 bg-neon-blue/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
             <div className="relative flex items-center gap-3">

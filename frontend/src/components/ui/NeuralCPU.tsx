@@ -10,10 +10,10 @@ export default function NeuralCPU() {
       <div className="absolute right-[20%] top-[30%] w-1.5 h-1.5 bg-neon-blue rounded-full shadow-[0_0_15px_#00f0a8]" />
 
       {/* Main CPU Body */}
-      <div className="relative w-48 h-48 md:w-64 md:h-64 border-2 border-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm bg-[#00f0a8]/5 shadow-[0_0_60px_rgba(0,240,168,0.1)]">
+      <div className="relative w-48 h-48 md:w-64 md:h-64 border-2 border-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm bg-neon-blue/5 shadow-[0_0_60px_rgba(0,240,168,0.1)]">
         
         {/* Inner Core */}
-        <div className="w-16 h-16 md:w-24 md:h-24 border border-neon-blue/50 rounded-lg flex items-center justify-center relative bg-[#00f0a8]/10 shadow-[inset_0_0_20px_rgba(0,240,168,0.2)]">
+        <div className="w-16 h-16 md:w-24 md:h-24 border border-neon-blue/50 rounded-lg flex items-center justify-center relative bg-neon-blue/10 shadow-[inset_0_0_20px_rgba(0,240,168,0.2)]">
           <div className="w-full h-full border border-neon-blue rounded-lg animate-pulse" />
         </div>
 

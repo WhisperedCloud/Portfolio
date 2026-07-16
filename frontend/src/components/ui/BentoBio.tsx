@@ -27,7 +27,7 @@ export default function BentoBio() {
     <section id="about" className="py-32 px-6 md:px-12 w-full max-w-[2000px] mx-auto bg-white border-b-2 border-black">
       
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b-4 border-black pb-8">
-        <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] m-0 leading-[0.8]">
+        <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter uppercase font-(family-name:--font-playfair) m-0 leading-[0.8]">
           The<br/>Architect.
         </h2>
         <div className="flex items-center gap-4 mt-8 md:mt-0">
@@ -48,9 +48,9 @@ export default function BentoBio() {
             <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-700 z-0" style={{ backgroundImage: 'radial-gradient(circle at center, #ffffff 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }} />
             
             <div className="relative z-10">
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8 font-[family-name:var(--font-playfair)] group-hover:text-white">Engineering Intelligence</h3>
+            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8 font-(family-name:--font-playfair) group-hover:text-white">Engineering Intelligence</h3>
             <p className="text-sm leading-relaxed mb-6 font-medium tracking-wide uppercase text-justify text-black group-hover:text-white transition-colors">
-                <span className="text-5xl font-black float-left mr-3 mt-[-10px] font-[family-name:var(--font-playfair)] text-red-600">I</span>
+                <span className="text-5xl font-black float-left mr-3 -mt-2.5 font-(family-name:--font-playfair) text-red-600">I</span>
                 am a Computer Science and Engineering graduate specializing in Artificial Intelligence and Machine Learning. Over the past few years, I have worked on full-stack web applications, AI-powered SaaS products, conversational AI systems, recruitment platforms, and analytics solutions.
             </p>
             <p className="text-sm leading-relaxed font-medium tracking-wide uppercase text-justify text-black group-hover:text-white transition-colors">
@@ -76,7 +76,7 @@ export default function BentoBio() {
             </div>
             <div className="mt-12">
                 <p className="text-[10px] font-bold tracking-[0.3em] text-black group-hover:text-white uppercase mb-2">Base of Operations</p>
-                <h4 className="text-2xl font-black text-black group-hover:text-white tracking-tighter uppercase font-[family-name:var(--font-playfair)] leading-none">Chennai, India</h4>
+                <h4 className="text-2xl font-black text-black group-hover:text-white tracking-tighter uppercase font-(family-name:--font-playfair) leading-none">Chennai, India</h4>
             </div>
             </div>
         </motion.div>
@@ -99,7 +99,7 @@ export default function BentoBio() {
             
             <div className="mt-12">
                 <p className="text-[10px] font-bold tracking-[0.3em] text-white/50 uppercase mb-2">Currently</p>
-                <h4 className="text-2xl font-black uppercase tracking-tighter leading-none font-[family-name:var(--font-playfair)] group-hover:text-red-500 transition-colors">Building AI Agent Systems</h4>
+                <h4 className="text-2xl font-black uppercase tracking-tighter leading-none font-(family-name:--font-playfair) group-hover:text-red-500 transition-colors">Building AI Agent Systems</h4>
             </div>
             </div>
         </motion.div>

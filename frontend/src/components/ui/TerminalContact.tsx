@@ -33,11 +33,11 @@ export default function TerminalContact() {
         {/* Left Side: Massive Typography */}
         <div className="w-full lg:w-1/2 flex flex-col">
             <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-[2px] bg-red-600" />
+                <div className="w-16 h-0.5 bg-red-600" />
                 <p className="text-black text-[10px] font-bold tracking-[0.4em] uppercase">Inquiries</p>
             </div>
             
-            <h2 className="text-6xl md:text-8xl lg:text-[9rem] font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] leading-[0.8] mb-8">
+            <h2 className="text-6xl md:text-8xl lg:text-[9rem] font-black text-black tracking-tighter uppercase font-(family-name:--font-playfair) leading-[0.8] mb-8">
                 Let's<br/>Talk.
                 <motion.span 
                     animate={{ opacity: [1, 1, 0, 0] }} 
@@ -52,7 +52,7 @@ export default function TerminalContact() {
 
             <div className="flex flex-col gap-4">
                 <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-black/50">Direct Contact</p>
-                <a href="mailto:meswar811@gmail.com" className="text-2xl md:text-4xl font-black text-black tracking-tighter font-[family-name:var(--font-playfair)] hover:text-red-600 transition-colors w-max">
+                <a href="mailto:meswar811@gmail.com" className="text-2xl md:text-4xl font-black text-black tracking-tighter font-(family-name:--font-playfair) hover:text-red-600 transition-colors w-max">
                     meswar811@gmail.com
                 </a>
             </div>
@@ -61,7 +61,7 @@ export default function TerminalContact() {
         {/* Right Side: Editorial Form */}
         <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
             {status === 'success' ? (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col justify-center items-start min-h-[400px] relative overflow-hidden">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full flex flex-col justify-center items-start min-h-100 relative overflow-hidden">
                     
                     {/* Animated Rocket */}
                     <motion.div 
@@ -74,7 +74,7 @@ export default function TerminalContact() {
                     </motion.div>
 
                     <div className="relative z-10">
-                        <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] mb-4">
+                        <h3 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase font-(family-name:--font-playfair) mb-4">
                             Message<br/>Received.
                         </h3>
                         <p className="text-black text-sm font-medium tracking-widest uppercase">
@@ -94,7 +94,7 @@ export default function TerminalContact() {
                             required
                             type="text" 
                             placeholder="YOUR NAME"
-                            className="w-full bg-transparent border-b-4 border-black py-4 text-2xl md:text-4xl font-black text-black placeholder-black/20 outline-none focus:border-red-600 transition-colors font-[family-name:var(--font-playfair)]"
+                            className="w-full bg-transparent border-b-4 border-black py-4 text-2xl md:text-4xl font-black text-black placeholder-black/20 outline-none focus:border-red-600 transition-colors font-(family-name:--font-playfair)"
                             value={formData.name}
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
                         />
@@ -109,7 +109,7 @@ export default function TerminalContact() {
                             required
                             type="email" 
                             placeholder="EMAIL ADDRESS"
-                            className="w-full bg-transparent border-b-4 border-black py-4 text-2xl md:text-4xl font-black text-black placeholder-black/20 outline-none focus:border-red-600 transition-colors font-[family-name:var(--font-playfair)]"
+                            className="w-full bg-transparent border-b-4 border-black py-4 text-2xl md:text-4xl font-black text-black placeholder-black/20 outline-none focus:border-red-600 transition-colors font-(family-name:--font-playfair)"
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
                         />
@@ -124,7 +124,7 @@ export default function TerminalContact() {
                             required
                             rows={3}
                             placeholder="PROJECT DETAILS..."
-                            className="w-full bg-transparent border-b-4 border-black py-4 text-2xl md:text-4xl font-black text-black placeholder-black/20 outline-none focus:border-red-600 transition-colors resize-none font-[family-name:var(--font-playfair)]"
+                            className="w-full bg-transparent border-b-4 border-black py-4 text-2xl md:text-4xl font-black text-black placeholder-black/20 outline-none focus:border-red-600 transition-colors resize-none font-(family-name:--font-playfair)"
                             value={formData.message}
                             onChange={(e) => setFormData({...formData, message: e.target.value})}
                         />

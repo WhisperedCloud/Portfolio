@@ -95,7 +95,7 @@ export default function HeroSection() {
         className="relative z-10 flex flex-col w-full px-6 md:px-12 pt-32"
       >
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between border-b-2 border-black pb-8 mb-8">
-            <h1 className="text-[12vw] md:text-[8vw] font-black text-black leading-[0.8] tracking-tighter uppercase font-[family-name:var(--font-playfair)] m-0 p-0 mix-blend-multiply">
+            <h1 className="text-[12vw] md:text-[8vw] font-black text-black leading-[0.8] tracking-tighter uppercase font-(family-name:--font-playfair) m-0 p-0 mix-blend-multiply">
               <motion.span 
                 className="inline-block"
                 animate={{ x: mousePosition.x * -30, y: mousePosition.y * -30 }}
@@ -112,7 +112,7 @@ export default function HeroSection() {
 
         <div className="flex flex-col md:flex-row justify-between items-start gap-12">
             <motion.h2 
-                className="text-[10vw] md:text-[7vw] font-black text-black leading-[0.8] tracking-tighter uppercase font-[family-name:var(--font-playfair)] mix-blend-multiply"
+                className="text-[10vw] md:text-[7vw] font-black text-black leading-[0.8] tracking-tighter uppercase font-(family-name:--font-playfair) mix-blend-multiply"
                 animate={{ x: mousePosition.x * 20, y: mousePosition.y * 20 }}
                 transition={{ type: "spring", stiffness: 100, damping: 30 }}
             >
@@ -120,7 +120,7 @@ export default function HeroSection() {
             </motion.h2>
 
             <div className="max-w-md border-l-2 border-black pl-6">
-                <p className="text-sm md:text-base text-black font-medium leading-relaxed uppercase tracking-widest text-justify min-h-[150px]">
+                <p className="text-sm md:text-base text-black font-medium leading-relaxed uppercase tracking-widest text-justify min-h-37.5">
                     <Typewriter text={technicalBio} delay={500} speed={15} />
                 </p>
                 <div className="mt-8 flex gap-4">
@@ -148,7 +148,7 @@ export default function HeroSection() {
         </div>
 
         {/* Floating Scroll Indicator */}
-        <div className="absolute bottom-[-150px] right-12 flex flex-col items-center gap-4">
+        <div className="absolute -bottom-37.5 right-12 flex flex-col items-center gap-4">
             <span className="text-[10px] font-bold tracking-[0.3em] text-black uppercase [writing-mode:vertical-lr]">Scroll</span>
             <motion.div 
                 animate={{ scaleY: [0, 1, 0], originY: [0, 0, 1] }} 

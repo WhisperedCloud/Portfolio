@@ -57,11 +57,11 @@ export default function Timeline() {
       
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-end border-b-4 border-black pb-8 mb-16">
-        <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] leading-none m-0">
+        <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter uppercase font-(family-name:--font-playfair) leading-none m-0">
           Journal.
         </h2>
         <div className="flex items-center gap-4 mt-8 md:mt-0">
-            <div className="w-16 h-[2px] bg-red-600" />
+            <div className="w-16 h-0.5 bg-red-600" />
             <p className="text-black text-[10px] font-bold tracking-[0.4em] uppercase">Chronicles</p>
         </div>
       </div>
@@ -98,13 +98,13 @@ function TimelineItem({ item, index }: { item: any, index: number }) {
       className="flex flex-col md:flex-row items-start md:items-stretch border-b-2 border-black group hover:bg-[#f4f4f4] transition-colors relative z-10"
     >
       {/* Timeline Node Dot */}
-      <div className="hidden md:block absolute left-[25%] top-1/2 -translate-x-[50%] -translate-y-1/2 w-4 h-4 bg-white border-2 border-black rounded-full z-20 group-hover:border-red-600 group-hover:scale-150 transition-all duration-300">
-        <div className="absolute inset-[3px] bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="hidden md:block absolute left-[25%] top-1/2 translate-x-[-50%] -translate-y-1/2 w-4 h-4 bg-white border-2 border-black rounded-full z-20 group-hover:border-red-600 group-hover:scale-150 transition-all duration-300">
+        <div className="absolute inset-0.75 bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
 
       {/* Year & Type (Left Column) */}
       <div className="w-full md:w-1/4 flex flex-row md:flex-col justify-between md:justify-start p-6 md:p-8 border-b-2 md:border-b-0 md:border-r-2 border-black bg-white group-hover:bg-[#f4f4f4] transition-colors">
-          <span className="text-4xl md:text-5xl font-black text-black font-[family-name:var(--font-playfair)] tracking-tighter">
+          <span className="text-4xl md:text-5xl font-black text-black font-(family-name:--font-playfair) tracking-tighter">
               <TextScramble text={item.year} trigger={isInView} />
           </span>
                 <span className="text-red-600 text-[10px] font-bold tracking-[0.3em] uppercase md:mt-auto bg-white px-2 py-1 border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] self-start md:self-auto">
@@ -114,7 +114,7 @@ function TimelineItem({ item, index }: { item: any, index: number }) {
 
             {/* Content (Right Column) */}
             <div className="w-full md:w-3/4 p-6 md:p-8 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-4xl font-black text-black tracking-tighter uppercase mb-2 font-[family-name:var(--font-playfair)] group-hover:text-red-600 transition-colors">
+                <h3 className="text-2xl md:text-4xl font-black text-black tracking-tighter uppercase mb-2 font-(family-name:--font-playfair) group-hover:text-red-600 transition-colors">
                     {item.title}
                 </h3>
                 <h4 className="text-black text-xs font-bold tracking-widest uppercase mb-6">

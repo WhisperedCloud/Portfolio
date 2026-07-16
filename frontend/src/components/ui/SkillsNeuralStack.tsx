@@ -68,7 +68,7 @@ function SkillNode({ node, index }: { node: any, index: number }) {
           <span className="text-xs font-bold font-mono tracking-widest opacity-50">0{index + 1}</span>
       </div>
       
-      <h3 className="relative z-10 text-3xl font-black tracking-tighter uppercase mb-2 font-[family-name:var(--font-playfair)]">
+      <h3 className="relative z-10 text-3xl font-black tracking-tighter uppercase mb-2 font-(family-name:--font-playfair)">
         <TextScramble text={node.name} trigger={isHovered} />
       </h3>
       <p className={`relative z-10 text-[10px] font-bold tracking-[0.3em] uppercase mb-6 ${node.highlight ? 'text-white/60 group-hover:text-white/80' : 'text-red-600'}`}>
@@ -87,11 +87,11 @@ export default function SkillsNeuralStack() {
       
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-end border-b-4 border-black pb-8 mb-16">
-        <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] leading-none m-0">
+        <h2 className="text-5xl md:text-7xl font-black text-black tracking-tighter uppercase font-(family-name:--font-playfair) leading-none m-0">
           Neural<br/>Stack.
         </h2>
         <div className="flex items-center gap-4 mt-8 md:mt-0">
-            <div className="w-16 h-[2px] bg-red-600" />
+            <div className="w-16 h-0.5 bg-red-600" />
             <p className="text-black text-[10px] font-bold tracking-[0.4em] uppercase">Core Capabilities</p>
         </div>
       </div>

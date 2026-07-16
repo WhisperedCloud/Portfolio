@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <>
       <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-red-600 z-[60] origin-left" 
+        className="fixed top-0 left-0 right-0 h-1 bg-red-600 z-60 origin-left" 
         style={{ scaleX }} 
       />
       <div className="fixed top-0 left-0 w-full z-50 bg-white border-b-2 border-black flex items-center justify-between px-6 py-4 md:px-12 md:py-6 mt-1">
@@ -34,7 +34,7 @@ export default function Navbar() {
           onMouseEnter={() => setHoveredElement('link')}
           onMouseLeave={() => setHoveredElement(null)}
         >
-          <div className="text-black text-2xl md:text-3xl font-black tracking-tighter uppercase font-[family-name:var(--font-playfair)]">
+          <div className="text-black text-2xl md:text-3xl font-black tracking-tighter uppercase font-(family-name:--font-playfair)">
             ESWAR M
           </div>
         </div>
@@ -83,13 +83,13 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
-            className="fixed top-[72px] left-0 w-full bg-white border-b-4 border-black z-40 flex flex-col items-center py-12 gap-8 md:hidden"
+            className="fixed top-18 left-0 w-full bg-white border-b-4 border-black z-40 flex flex-col items-center py-12 gap-8 md:hidden"
             style={{ boxShadow: "0px 20px 0px 0px rgba(0,0,0,1)" }}
           >
-            <a href="#about" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] text-black hover:text-red-600 transition-colors">Index</a>
-            <a href="#projects" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] text-black hover:text-red-600 transition-colors">Archive</a>
-            <a href="#experience" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] text-black hover:text-red-600 transition-colors">Journal</a>
-            <a href="#contact" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] text-black hover:text-red-600 transition-colors">Contact</a>
+            <a href="#about" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-(family-name:--font-playfair) text-black hover:text-red-600 transition-colors">Index</a>
+            <a href="#projects" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-(family-name:--font-playfair) text-black hover:text-red-600 transition-colors">Archive</a>
+            <a href="#experience" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-(family-name:--font-playfair) text-black hover:text-red-600 transition-colors">Journal</a>
+            <a href="#contact" onClick={toggleMobileMenu} className="text-4xl font-black tracking-tighter uppercase font-(family-name:--font-playfair) text-black hover:text-red-600 transition-colors">Contact</a>
             
             <div className="mt-8 flex items-center gap-3 px-6 py-3 border-2 border-black bg-black text-white active:scale-95 transition-transform">
               <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse" />

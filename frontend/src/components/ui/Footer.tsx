@@ -7,7 +7,7 @@ export default function Footer() {
         
         {/* Left Side: Massive Typography */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-[family-name:var(--font-playfair)] mb-4">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase font-(family-name:--font-playfair) mb-4">
                 Eswar M.
             </h2>
             <div className="flex flex-col gap-2 text-[10px] font-bold tracking-[0.3em] uppercase text-white/50">

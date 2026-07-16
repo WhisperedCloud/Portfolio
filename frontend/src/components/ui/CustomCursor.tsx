@@ -39,7 +39,7 @@ export default function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 bg-[#00f0a8] rounded-full pointer-events-none z-[9999] mix-blend-screen"
+        className="fixed top-0 left-0 w-3 h-3 bg-neon-blue rounded-full pointer-events-none z-9999 mix-blend-screen"
         animate={{
           x: mousePosition.x - 6,
           y: mousePosition.y - 6,
@@ -48,7 +48,7 @@ export default function CustomCursor() {
         transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-[#00f0a8] rounded-full pointer-events-none z-[9998] mix-blend-screen"
+        className="fixed top-0 left-0 w-10 h-10 border border-neon-blue rounded-full pointer-events-none z-9998 mix-blend-screen"
         animate={{
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
