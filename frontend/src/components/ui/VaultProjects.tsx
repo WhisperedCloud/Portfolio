@@ -14,6 +14,14 @@ const projects = [
         link: "https://github.com/WhisperedCloud/Job_portal.git",
         year: "2026"
     },
+    {
+        category: "PRODUCTIVITY",
+        title: "Budget Bot",
+        desc: "Interactive analytics dashboards for expense monitoring.",
+        tags: ["Neon PostgreSQL", "TYPESCRIPT", "CHART.JS", "Python"],
+        link: "https://github.com/WhisperedCloud/BudgetBot.git",
+        year: "2024"
+    },
      {
         category: "WEB APP",
         title: "Leave Flow",
@@ -44,14 +52,6 @@ const projects = [
         desc: "Multi-user platform allowing users to securely manage and search recipes.",
         tags: ["REACT.JS", "NODE.JS", "POSTGRESQL"],
         link: "https://github.com/WhisperedCloud/Recipe-sharing-Platform.git",
-        year: "2024"
-    },
-    {
-        category: "PRODUCTIVITY",
-        title: "Finance Tracker",
-        desc: "Interactive analytics dashboards for expense monitoring.",
-        tags: ["ANGULAR", "TYPESCRIPT", "CHART.JS"],
-        link: "https://github.com/WhisperedCloud/Finance-Tracker.git",
         year: "2024"
     },
     {
