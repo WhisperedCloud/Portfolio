@@ -20,7 +20,7 @@ const projects = [
         desc: "Interactive analytics dashboards for expense monitoring.",
         tags: ["Neon PostgreSQL", "TYPESCRIPT", "CHART.JS", "Python"],
         link: "https://github.com/WhisperedCloud/BudgetBot.git",
-        year: "2024"
+        year: "2026"
     },
      {
         category: "WEB APP",
